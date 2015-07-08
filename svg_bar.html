@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="js/vendor/d3.js"></script>
+    <style>
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: gray;
+            shape-rendering: crispEdges;
+        }
+        .axis text {
+            font-family: "Microsoft YaHei";
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <script type="text/javascript">
+        var list = [25, 32, 77, 88, 99, 5, 58];
+        var width = 600;
+        var height = 400;
+        var padding = 5;
+        var xOffset = 40;
+        var yOffset = 40;
+
+        // attr(key, value)
+        var svg = d3.select("body").append('svg')
+                .attr("width", width)
+                .attr("height", height);
+
+        // scale.linear()
+        var widthScale = d3.scale.linear()
+                .domain([0, list.length])
+                .range([0, width - xOffset]);
+        var heightScale = d3.scale.linear()
+                .domain([d3.max(list), 0])
+                .range([height- yOffset, 0]);
+
+        // axis
+        var xAxis = d3.svg.axis()
+                .scale(widthScale)
+                .orient("bottom");
+        var yAxis = d3.svg.axis()
+                .scale(heightScale)
+                .orient("left");
+
+        // enter()
+        svg.selectAll('rect')   // not exists yet
+                .data(list)
+                .enter()        // enter()
+                .append('rect') // append first
+                .attr("x", function(data, i){
+                    return (width-xOffset)/list.length*i + xOffset;
+                })
+                .attr("y", function(data, i){
+                    return height - padding - heightScale(data) - yOffset;
+                })
+                .attr("width", function(data, i){
+                    return (width -xOffset)/list.length - padding;
+                })
+                .attr("height", function(data, i){
+                    return heightScale(data);
+                })
+                .attr("fill", "#ddd");
+
+        svg.selectAll("text")
+                .data(list)
+                .enter()
+                .append("text")
+                .attr('fill', "blue") // fill
+                .attr("x", function(data, i){
+                    return (width-xOffset)/list.length*i + xOffset;
+                })
+                .attr("y", function(data, i){
+                    return height - padding - heightScale(data) - yOffset - 5;
+                })
+                .attr("dx", function(data, i){
+                    return ((width -xOffset)/list.length - padding)/3;
+                })
+                .attr("dy", function(data, i){
+                    return 25;
+                })
+                .text(function(data, i){
+                    return data;
+                })
+                .attr("text-anchor", "begin");
+
+        // call(axis)
+        svg.append("g")
+                .call(yAxis)
+                .attr("class", "axis")
+                .attr("transform", "translate(35, 5)"); // transform => translate
+
+        svg.append("g")
+                .call(xAxis)
+                .attr("class", "axis")
+                .attr("transform", "translate(35, "+(height-yOffset)+")")
+    </script>
+</body>
+</html>

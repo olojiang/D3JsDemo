@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="js/vendor/d3.js"></script>
+</head>
+<body>
+    <h1>test 1</h1>
+    <h1>test 2</h1>
+    <h2>test h2.1</h2>
+    <h2>test h2.2</h2>
+    <script type="text/javascript">
+        var list=["I am Hunter", "32 years old", "learning D3"];
+
+        // Append
+        var p = d3.select('body').append('p');
+        p.data(list);
+
+        p.text(function(item, i){
+            return i+"."+item;
+        });
+
+        // Change
+        d3.selectAll('body>h1').data(list).text(function(item, i){return item});
+
+        // Remove
+        d3.select('body>h2').remove();
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="css/table.css" />
+    <script src="js/vendor/d3.js"></script>
+    <script src="js/vendor/underscore.js"></script>
+
+    <script src="js/bigknow/bigknow.number.util.js"></script>
+    <script src="js/bigknow/bigknow.string.util.js"></script>
+    <script src="js/generateTableData.js"></script>
+
+    <script src="js/table.js"></script>
+</head>
+<body>
+    <div id="tableDiv">
+
+    </div>
+
+    <script type="text/javascript">
+        // Graph height and width
+        var width = 4000;
+        var height = 3000;
+        var svg = d3.select('body').append("svg").attr("width", width).attr("height", height);
+
+        // Table 1
+        var tables = [{
+            name: "TableName",
+            headers: [{name: "Column", value: "column"}, {name: "Type", value: "type"}],
+            data: [
+                {
+                    column: "id",
+                    type: "integer"
+                },
+                {
+                    column: "age_long_name_babababababababab中文",
+                    type: "integer"
+                },
+                {
+                    column: "name",
+                    type: "varchar"
+                }
+            ],
+            xOffset: 20,
+            yOffset: 20
+        },{
+            name: "TableName",
+            headers: [{name: "Column", value: "column"}, {name: "Type", value: "type"}, {name: "Type2", value: "type2"}],
+            data: [
+                {
+                    column: "id",
+                    type: "integer",
+                    type2: "integer"
+                },
+                {
+                    column: "asdfasdtwer",
+                    type: "integer",
+                    type2: "integer"
+                },
+                {
+                    column: "name",
+                    type: "varchar",
+                    type2: "integer"
+                }
+            ],
+            xOffset: 50,
+            yOffset: 200
+        },{
+            name: "TableName",
+            headers: [{name: "Column", value: "column"}, {name: "Type", value: "type"}],
+            data: [
+                {
+                    column: "id",
+                    type: "integer"
+                },
+                {
+                    column: "absdf",
+                    type: "integer"
+                },
+                {
+                    column: "name",
+                    type: "varchar"
+                },
+                {
+                    column: "name中文测试，中文测试~~~",
+                    type: "varchar"
+                },
+                {
+                    column: "name",
+                    type: "varchar"
+                }
+            ],
+            xOffset: 500,
+            yOffset: 220
+        }];
+
+        tables = generateTableData(1);
+
+        new BigknowTable(svg, tables);
+    </script>
+</body>
+</html>

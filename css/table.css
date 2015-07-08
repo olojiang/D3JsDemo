@@ -1,0 +1,16 @@
+.table-container {
+    font-family: "Microsoft YaHei";
+}
+
+.table-border {
+    stroke: #ddd;
+    stroke-width: 1px;
+}
+
+.table-row:hover {
+    fill: rgba(20, 20, 20, 1);
+}
+
+.table-row {
+    fill: rgba(70, 70, 70, 1);
+}

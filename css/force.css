@@ -1,0 +1,9 @@
+.lineText {
+    fill: darkgreen;
+    fill-opacity: 0;
+    font-size: 12px;
+}
+
+.line {
+    fill: none;
+}

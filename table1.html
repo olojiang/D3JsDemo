@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="css/table.css" />
+    <script src="js/vendor/d3.js"></script>
+    <script src="js/vendor/underscore.js"></script>
+
+    <script src="js/table1.js"></script>
+</head>
+<body>
+    <div id="tableDiv">
+
+    </div>
+
+    <script type="text/javascript">
+        // Graph height and width
+        var width = 1000;
+        var height = 600;
+        var svg = d3.select('body').append("svg").attr("width", width).attr("height", height);
+
+        // Table 1
+        var tableName = "TableName";
+        var headers = [{name: "Column", value: "column"}, {name: "Type", value: "type"}];
+        var data = [
+            {
+                column: "id2",
+                type: "integer"
+            },
+            {
+                column: "age2",
+                type: "integer"
+            }
+        ];
+
+        var xOffset = 20;
+        var yOffset = 20;
+
+        new BigknowTable(svg, tableName, headers, data, xOffset, yOffset);
+
+        tableName = "TableName2";
+        headers = [{name: "Column3", value: "column"}, {name: "Type2", value: "type"}];
+        data = [
+            {
+                column: "id2",
+                type: "integer"
+            },
+            {
+                column: "age2",
+                type: "integer"
+            }
+        ];
+
+        xOffset = 50;
+        yOffset = 200;
+
+        new BigknowTable(svg, tableName, headers, data, xOffset, yOffset);
+
+        tableName = "TableName3";
+        headers = [{name: "Column3", value: "column"}, {name: "Type3", value: "type"}, {name: "Gender", value: "gender"}];
+        data = [
+            {
+                column: "id3",
+                type: "integer",
+                gender: "male"
+            },
+            {
+                column: "age3",
+                type: "integer",
+                gender: "male"
+            },
+            {
+                column: "name3",
+                type: "varchar",
+                gender: "female"
+            },
+            {
+                column: "id33",
+                type: "integer",
+                gender: "female"
+            },
+            {
+                column: "age33",
+                type: "integer",
+                gender: "male"
+            },
+            {
+                column: "中文测试~~中文测试~~",
+                type: "varchar",
+                gender: "female"
+            }
+        ];
+        xOffset = 500;
+        yOffset = 220;
+        new BigknowTable(svg, tableName, headers, data, xOffset, yOffset);
+    </script>
+</body>
+</html>

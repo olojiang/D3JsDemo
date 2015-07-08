@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <script src="js/vendor/d3.js"></script>
+</head>
+<body>
+<h1>Change the content of p</h1>
+<p>Unknown</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam, recusandae?</p>
+
+<script type="text/javascript">
+    // d3.select, d3.selectAll
+    var p = d3.select('body').selectAll("p");
+
+    // text()
+    p.text("Hello D3");
+
+    // style()
+    p.style('color', "red");
+    p.style('font-family', "microsoft-YaHei");
+
+    var p2 = p.append("p");
+    p2.text("Hello D3 2");
+    p2.style("color", "blue");
+</script>
+
+</body>
+</html>

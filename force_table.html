@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+
+    <link rel="stylesheet" href="css/force.css"/>
+    <link rel="stylesheet" href="css/table.css"/>
+
+    <script src="js/vendor/d3.js"></script>
+    <script src="js/vendor/underscore.js"></script>
+
+    <script src="js/bigknow/bigknow.number.util.js"></script>
+    <script src="js/bigknow/bigknow.string.util.js"></script>
+    <script src="js/generateTableData.js"></script>
+
+    <script src="js/force.js"></script>
+    <script src="js/table.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        var width = 4000;
+        var height = 3000;
+
+        var svg = d3.select('body').append('svg').attr('width', width).attr('height', height);
+
+        // Define node
+        var nodes = [
+            {
+                type: "table",
+                name: "TableName1",
+                headers: [{name: "Column", value: "column"}, {name: "Type", value: "type"}],
+                data: [
+                    {
+                        column: "id",
+                        type: "integer"
+                    },
+                    {
+                        column: "age_long_name_babababababababab",
+                        type: "integer"
+                    },
+                    {
+                        column: "name",
+                        type: "varchar"
+                    }
+                ]
+            },
+            {
+                type: "table",
+                name: "TableName1",
+                headers: [{name: "Column", value: "column"}, {name: "Type", value: "type"}],
+                data: [
+                    {
+                        column: "id",
+                        type: "integer"
+                    },
+                    {
+                        column: "age_long_name_babababababababab",
+                        type: "integer"
+                    },
+                    {
+                        column: "name",
+                        type: "varchar"
+                    }
+                ]
+            },
+            {
+                type: "table",
+                name: "TableName1",
+                headers: [{name: "Column", value: "column"}, {name: "Type", value: "type"}],
+                data: [
+                    {
+                        column: "id",
+                        type: "integer"
+                    },
+                    {
+                        column: "age_long_name_babababababababab",
+                        type: "integer"
+                    },
+                    {
+                        column: "name",
+                        type: "varchar"
+                    }
+                ]
+            }
+        ];
+
+        nodes = generateTableData(3);
+
+        var edges = [
+            {source: 0, target: 1, relation: "PK"},
+            {source: 2, target: 1, relation: "FK"}
+        ];
+
+        var type = "table";
+
+        var handler = new Force(svg, width, height, nodes, edges, type);
+    </script>
+</body>
+</html>

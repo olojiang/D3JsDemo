@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/force.css"/>
+    <script src="js/vendor/d3.js"></script>
+    <script src="js/force.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    var width = 800;
+    var height = 600;
+
+    var svg = d3.select('body').append('svg').attr('width', width).attr('height', height);
+
+    // Define node
+    var nodes = [
+        {name: "Cheng Du", type: "node"},
+        {name: "Bei Jing", type: "node"},
+        {name: "Tian Jing", type: "node"}
+    ];
+
+    var edges = [
+        {source: 0, target: 1, relation: "Education"},
+        {source: 2, target: 1, relation: "Marry"},
+        {source: 0, target: 2, relation: "Travel"}
+    ];
+
+    var handler = new Force(svg, width, height, nodes, edges, "node");
+
+</script>
+</body>
+</html>
